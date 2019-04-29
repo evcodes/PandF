@@ -1,4 +1,18 @@
 <resources>
-    <string name="app_name">Peter_and_Friends</string>
+    <string name="app_name">Peter and Friends</string>
     <string name="peter_amp_friends"><![CDATA[Peter & Friends]]></string>
+    <string name="home">Home</string>
+    <string name="settings">Account</string>
+    <string name="messages">Messages</string>
+    <string name="greeting">Welcome to Peter and Friends</string>
+    <string name="register">Register</string>
+    <string name="verify_password">Verify Password</string>
+    <string name="password">Password</string>
+    <string name="birthday">Birthday</string>
+    <string name="email_address">Email Address</string>
+    <string name="what_s_your_name">What\'s your name?</string>
+    <string name="profile_img_description">Profile image</string>
+    <string name="user_name">Eddy Varela</string>
+    <string name="address">Miami, Florida</string>
+    <string name="rating_sample">4.2/5</string>
 </resources>
