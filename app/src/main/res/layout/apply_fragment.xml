@@ -12,13 +12,11 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
-        <EditText
-                android:id="@+id/jobTitleET"
+        <TextView
+                android:id="@+id/jobTitleTV"
                 android:layout_width="match_parent"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:hint="@string/job_title"
-                android:textColorHint="@color/colorPrimary"
+                android:text="@string/job_title"
+                android:textColor="@color/colorPrimary"
                 android:padding="5dp"
                 android:textSize="30sp"
                 android:layout_height="wrap_content"/>
@@ -29,23 +27,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <EditText
-                    android:id="@+id/locationET"
+            <TextView
+                    android:id="@+id/locationTV"
                     android:layout_width="0dp"
-                    android:inputType="textMultiLine"
-                    android:autofillHints=""
-                    android:hint="@string/location"
+                    android:text="@string/location"
                     android:layout_weight="1"
-                    android:textColorHint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimary"
                     android:padding="5dp"
                     android:textSize="15sp"
                     android:layout_height="wrap_content"/>
 
-            <Button
+            <TextView
+                    android:id="@+id/dateTV"
                     android:layout_width="0dp"
-                    android:id="@+id/datePostedBTN"
-                    android:layout_weight="1"
                     android:text="@string/date_posted"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimary"
+                    android:padding="5dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
 
@@ -55,74 +54,68 @@
                 android:weightSum="2"
                 android:orientation="horizontal">
 
-            <EditText
-                    android:id="@+id/salaryET"
+            <TextView
+                    android:id="@+id/salaryTV"
                     android:layout_width="0dp"
-                    android:inputType="textMultiLine"
-                    android:autofillHints=""
-                    android:hint="@string/salary"
+                    android:text="@string/salary"
                     android:layout_weight="1"
-                    android:textColorHint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimary"
                     android:padding="5dp"
                     android:textSize="15sp"
                     android:layout_height="wrap_content"/>
 
-            <Button
+
+            <TextView
+                    android:id="@+id/startTimeTV"
                     android:layout_width="0dp"
-                    android:id="@+id/startTimeBTN"
-                    android:layout_weight="1"
                     android:text="@string/start_time"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimary"
+                    android:padding="5dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <EditText
-                android:id="@+id/descriptionET"
+        <TextView
+                android:id="@+id/descriptionTV"
                 android:layout_width="match_parent"
-                android:hint="@string/description"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:textColorHint="@color/colorPrimary"
+                android:text="@string/description"
+                android:textColor="@color/colorPrimary"
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:layout_height="wrap_content"/>
 
-        <EditText
-                android:id="@+id/requirementsET"
+        <TextView
+                android:id="@+id/requirementsTV"
                 android:layout_width="match_parent"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:hint="@string/requirements"
-                android:textColorHint="@color/colorPrimary"
+                android:text="@string/requirements"
+                android:textColor="@color/colorPrimary"
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:layout_height="wrap_content"/>
 
-        <EditText
-                android:id="@+id/tagsET"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
+        <TextView
+                android:id="@+id/tagsTV"
                 android:layout_width="match_parent"
-                android:hint="@string/tags"
-                android:textColorHint="@color/colorPrimary"
+                android:text="@string/tags"
+                android:textColor="@color/colorPrimary"
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:layout_height="wrap_content"/>
 
-        <EditText
-                android:id="@+id/contactET"
+        <TextView
+                android:id="@+id/contactTV"
                 android:layout_width="match_parent"
-                android:hint="@string/contact"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:textColorHint="@color/colorPrimary"
+                android:text="@string/contact"
+                android:textColor="@color/colorPrimary"
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:layout_height="wrap_content"/>
 
         <Button
-                android:id="@+id/createBTN"
+                android:id="@+id/applyBTN"
                 android:layout_width="match_parent"
-                android:text="@string/create_update"
+                android:text="@string/apply"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"/>
     </LinearLayout>

@@ -22,7 +22,9 @@ class Splash : AppCompatActivity() {
             val i = Intent(this@Splash, MainActivity::class.java)
             startActivity(i)
             finish()
-        }, 3000)
+        }, 500)
+
+        // TODO: Change to 3000 in final phrase
 
 
     }
