@@ -4,10 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import com.eddyvarela.peter_and_friends.screen_fragments.AccountFragment
-import com.eddyvarela.peter_and_friends.screen_fragments.CreatePosting
-import com.eddyvarela.peter_and_friends.screen_fragments.HomeFragment
-import com.eddyvarela.peter_and_friends.screen_fragments.MailFragment
+import com.eddyvarela.peter_and_friends.screen_fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                 MailFragment.TAG -> fragment = MailFragment()
                 CreatePosting.TAG -> fragment = CreatePosting()
                 AccountFragment.TAG -> fragment = AccountFragment()
+                ApplyFragment.TAG -> fragment = ApplyFragment()
             }
         }
 

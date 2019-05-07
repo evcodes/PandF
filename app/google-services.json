@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "202030547824",
+    "firebase_url": "https://peter-and-friends-ce246.firebaseio.com",
+    "project_id": "peter-and-friends-ce246",
+    "storage_bucket": "peter-and-friends-ce246.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202030547824:android:28ea2d76437eebd3",
+        "android_client_info": {
+          "package_name": "com.eddyvarela.peter_and_friends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202030547824-5rd2ovc3f03qqr1ski7567eadmi06rgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eddyvarela.peter_and_friends",
+            "certificate_hash": "8b6c6b36cc2a3e137b3c4782129587570a60d512"
+          }
+        },
+        {
+          "client_id": "202030547824-vna02vqp0dipct14bg5lrnikop80a3oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9X1oS40lof7KIYD4yWmMSLltN4E-V-rE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202030547824-vna02vqp0dipct14bg5lrnikop80a3oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
