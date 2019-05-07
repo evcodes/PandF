@@ -57,7 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/contactET"/>
 
 
-<!--dsafdsfdsaffdsa-->
+
         <EditText
                 android:id="@+id/salaryET"
                 android:layout_width="358dp"
