@@ -4,12 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.support.annotation.UiThread
-import java.lang.Thread.sleep
-import java.util.*
-import kotlin.concurrent.thread
-import android.support.v4.os.HandlerCompat.postDelayed
-
 
 
 class Splash : AppCompatActivity() {
@@ -19,10 +13,9 @@ class Splash : AppCompatActivity() {
         setContentView(R.layout.splash_activity)
 
         Handler().postDelayed( {
-            val i = Intent(this@Splash, MainActivity::class.java)
-            startActivity(i)
+            startActivity(Intent(this@Splash, LoginActivity::class.java))
             finish()
-        }, 500)
+        }, 3000)
 
         // TODO: Change to 3000 in final phrase
 

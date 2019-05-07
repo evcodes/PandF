@@ -1,129 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent">
 
-    <LinearLayout
+    <EditText
+            android:id="@+id/jobTitleET"
             android:layout_width="match_parent"
-            android:paddingVertical="40dp"
-            android:paddingHorizontal="20dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:inputType="textMultiLine"
+            android:hint="@string/job_title"
+            android:textColorHint="@color/colorPrimary"
+            android:padding="5dp"
+            android:textSize="24sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvCreateJobHeader" android:textColor="@color/colorPrimary"/>
 
-        <EditText
-                android:id="@+id/jobTitleET"
-                android:layout_width="match_parent"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:hint="@string/job_title"
-                android:textColorHint="@color/colorPrimary"
-                android:padding="5dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
+    <TextView
+            android:text="@string/logistic_information"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/jobTitleET" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:weightSum="2"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+    <TextView
+            android:text="@string/job_details"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/locationET"/>
+    <EditText
+            android:id="@+id/locationET"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textColorHint="@color/colorPrimary"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/editText7" android:hint="Location"
+            style="@style/Widget.AppCompat.EditText" android:inputType="text"/>
 
-            <EditText
-                    android:id="@+id/locationET"
-                    android:layout_width="0dp"
-                    android:inputType="textMultiLine"
-                    android:autofillHints=""
-                    android:hint="@string/location"
-                    android:layout_weight="1"
-                    android:textColorHint="@color/colorPrimary"
-                    android:padding="5dp"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content"/>
+    <EditText
+            android:id="@+id/descriptionET"
+            android:layout_width="match_parent"
+            android:hint="@string/description"
+            android:textColorHint="@color/colorPrimary"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" app:layout_constraintStart_toStartOf="@+id/textView4"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.666"
+            style="@style/Widget.AppCompat.EditText" android:inputType="text"/>
 
-            <Button
-                    android:layout_width="0dp"
-                    android:id="@+id/datePostedBTN"
-                    android:layout_weight="1"
-                    android:text="@string/date_posted"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
+    <EditText
+            android:id="@+id/requirementsET"
+            android:layout_width="0dp"
+            android:inputType="textMultiLine"
+            android:hint="@string/requirements"
+            android:textColorHint="@color/colorPrimary"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionET" style="@style/Widget.AppCompat.EditText"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:orientation="horizontal">
+    <EditText
+            android:id="@+id/tagsET"
+            android:inputType="textMultiLine"
+            android:autofillHints=""
+            android:layout_width="0dp"
+            android:hint="@string/tags"
+            android:textColorHint="@color/colorPrimary"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/requirementsET" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+            app:layout_constraintHorizontal_bias="1.0" style="@style/Widget.AppCompat.EditText"/>
 
-            <EditText
-                    android:id="@+id/salaryET"
-                    android:layout_width="0dp"
-                    android:inputType="textMultiLine"
-                    android:autofillHints=""
-                    android:hint="@string/salary"
-                    android:layout_weight="1"
-                    android:textColorHint="@color/colorPrimary"
-                    android:padding="5dp"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:hint="@string/start_time"
+            android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editText7"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/editText7"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/editText4"
+            app:layout_constraintHorizontal_bias="0.0" android:hint="Date"/>
 
-            <Button
-                    android:layout_width="0dp"
-                    android:id="@+id/startTimeBTN"
-                    android:layout_weight="1"
-                    android:text="@string/start_time"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
+    <Button
+            android:id="@+id/createBTN"
+            android:layout_width="186dp"
+            android:text="@string/post_job"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.498"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/tagsET"
+            style="@style/Widget.Design.AppBarLayout" android:textColor="#fff"/>
+    <TextView
+            android:text="@string/new_job_posting_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCreateJobHeader"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" android:textSize="30sp"
+            android:textColor="@color/colorPrimaryDark"/>
 
-        <EditText
-                android:id="@+id/descriptionET"
-                android:layout_width="match_parent"
-                android:hint="@string/description"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:textColorHint="@color/colorPrimary"
-                android:padding="5dp"
-                android:textSize="15sp"
-                android:layout_height="wrap_content"/>
 
-        <EditText
-                android:id="@+id/requirementsET"
-                android:layout_width="match_parent"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:hint="@string/requirements"
-                android:textColorHint="@color/colorPrimary"
-                android:padding="5dp"
-                android:textSize="15sp"
-                android:layout_height="wrap_content"/>
-
-        <EditText
-                android:id="@+id/tagsET"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:layout_width="match_parent"
-                android:hint="@string/tags"
-                android:textColorHint="@color/colorPrimary"
-                android:padding="5dp"
-                android:textSize="15sp"
-                android:layout_height="wrap_content"/>
-
-        <EditText
-                android:id="@+id/contactET"
-                android:layout_width="match_parent"
-                android:hint="@string/contact"
-                android:inputType="textMultiLine"
-                android:autofillHints=""
-                android:textColorHint="@color/colorPrimary"
-                android:padding="5dp"
-                android:textSize="15sp"
-                android:layout_height="wrap_content"/>
-
-        <Button
-                android:id="@+id/createBTN"
-                android:layout_width="match_parent"
-                android:text="@string/create_update"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"/>
-    </LinearLayout>
-</ScrollView>
+</android.support.constraint.ConstraintLayout>
