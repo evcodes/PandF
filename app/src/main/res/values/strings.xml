@@ -17,10 +17,8 @@
     <string name="rating_sample">4.2/5</string>
     <string name="start_time">Start Time</string>
     <string name="job_title">Job Title</string>
-    <string name="location">Location</string>
     <string name="date_posted">Date Posted</string>
     <string name="salary">Salary</string>
-    <string name="description">Description</string>
     <string name="requirements">Requirements</string>
     <string name="tags">Tags</string>
     <string name="contact">Contact</string>
@@ -30,6 +28,9 @@
     <string name="job_details">Job Details</string>
     <string name="logistic_information">Logistic Information</string>
     <string name="new_job_posting_details">New Job Posting Details</string>
-
+    <string name="username">Username</string>
+    <string name="edit">EDIT</string>
+    <string name="location">Location</string>
+    <string name="description">Description</string>
 
 </resources>
