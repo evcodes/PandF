@@ -5,14 +5,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorSpearmint"
         tools:context=".Splash">
 
     <ImageView
             android:contentDescription=""
             android:id="@+id/splashLogo"
-            android:layout_width="344dp"
+            android:layout_width="361dp"
             android:layout_height="361dp"
-            android:src="@drawable/logo"
+
+            android:src="@drawable/peter_and_friends_logo"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"

@@ -23,7 +23,7 @@
     <string name="tags">Tags</string>
     <string name="contact">Contact</string>
     <string name="apply">Apply</string>
-    <string name="create_update">Create/Update</string>
+    <string name="create_update">Create</string>
     <string name="post_job">Post Job</string>
     <string name="job_details">Job Details</string>
     <string name="logistic_information">Logistic Information</string>

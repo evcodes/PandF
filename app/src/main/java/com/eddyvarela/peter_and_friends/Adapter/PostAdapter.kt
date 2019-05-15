@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eddyvarela.peter_and_friends.R
+import com.eddyvarela.peter_and_friends.data.Post
+import kotlinx.android.synthetic.main.job_post_row.view.*
 
 class PostAdapter(
     private val context: Context, private val uId: String) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+
+    private var postsList = mutableListOf<Post>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
@@ -17,15 +21,22 @@ class PostAdapter(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getItemCount() = postsList.size
 
-    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val (authorId, author, title, pay) =
+            postsList[holder.adapterPosition]
+
+        holder.tvAuthor.text = author
+        holder.tvTitle.text = title
+        holder.tvPay.text = pay
+
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val tvTitle = itemView.tvJobTitle
+        val tvAuthor = itemView.tvAuthor
+        val tvPay = itemView.tvJobPay
 
     }
 }
