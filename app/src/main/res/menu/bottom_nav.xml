@@ -7,7 +7,7 @@
             android:title="@string/home"
             android:icon="@drawable/home"/>
     <item android:id="@+id/posting_tab"
-          android:title="CREATE POST"
+          android:title="@string/create_post"
           android:icon="@drawable/create"/>
 
     <item

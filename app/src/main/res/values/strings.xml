@@ -32,5 +32,8 @@
     <string name="edit">EDIT</string>
     <string name="location">Location</string>
     <string name="description">Description</string>
+    <string name="create_post">CREATE POST</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 
 </resources>
