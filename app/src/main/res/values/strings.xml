@@ -35,5 +35,6 @@
     <string name="create_post">CREATE POST</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-
+    <string name="image">Image</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "202030547824-t28mkqi62sbc0vka0gaap2lp22pusanu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eddyvarela.peter_and_friends",
+            "certificate_hash": "de90824c903fd27afd6e07b356851717bcee19ad"
+          }
+        },
+        {
           "client_id": "202030547824-5rd2ovc3f03qqr1ski7567eadmi06rgf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
