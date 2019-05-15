@@ -9,13 +9,13 @@
     <ImageView
             android:contentDescription=""
             android:id="@+id/btn_capture_photo"
-            android:layout_width="418dp"
-            android:layout_height="216dp"
+            android:layout_width="381dp"
+            android:layout_height="186dp"
             android:src="@drawable/rectangle"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintHorizontal_bias="0.266"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"/>
 
 
     <de.hdodenhof.circleimageview.CircleImageView

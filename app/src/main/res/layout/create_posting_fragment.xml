@@ -153,7 +153,5 @@
     <!--android:textColorHint="@color/colorPrimary"-->
     <!--android:padding="5dp"-->
     <!--android:textSize="15sp"-->
-    <!--android:layout_height="33dp"-->
-    <!--tools:layout_editor_absoluteY="86dp" tools:layout_editor_absoluteX="20dp"/>-->
 
 </android.support.constraint.ConstraintLayout>

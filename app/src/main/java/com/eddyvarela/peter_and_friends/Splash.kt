@@ -14,9 +14,9 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
 
-//        val showAnim = AnimationUtils.loadAnimation(this,
-//            R.anim.btnanim)
-//        animatedLogo.startAnimation(showAnim)
+        val showAnim = AnimationUtils.loadAnimation(this,
+            R.anim.splashanim)
+        splashLogo.startAnimation(showAnim)
 
         Handler().postDelayed( {
             startActivity(Intent(this@Splash, LoginActivity::class.java))
