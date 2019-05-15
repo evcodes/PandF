@@ -7,6 +7,6 @@
             android:endColor="@color/colorSpearmint"
             android:angle="315"/>
     <corners
-            android:radius="20dp"/>
+            android:radius="10dp"/>
     <!--<solid android:color="@color/colorSpearmint" />-->
 </shape>
