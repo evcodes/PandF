@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             loginUser()
         }
-
     }
 
     private fun loginUser() {

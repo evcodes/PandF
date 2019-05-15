@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import com.eddyvarela.peter_and_friends.data.Post
 import com.eddyvarela.peter_and_friends.screen_fragments.*
@@ -20,11 +21,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+//        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         navigation.setOnNavigationItemSelectedListener(myOnNavigationItemSelectedListener)
 
         showFragmentByTag(HomeFragment.TAG, false)
-
 
     }
 
@@ -57,9 +57,6 @@ class MainActivity : AppCompatActivity() {
             val ft = supportFragmentManager
                 .beginTransaction()
             ft.replace(R.id.fragmentContainer, fragment!!, tag)
-            if (toBackStack) {
-                ft.addToBackStack(null)
-            }
             ft.commit()
         }
     }
