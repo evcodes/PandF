@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Peter and Friends</string>
     <string name="peter_amp_friends"><![CDATA[Peter & Friends]]></string>
-    <string name="home">Home</string>
-    <string name="settings">Account</string>
+    <string name="home">HOME</string>
+    <string name="settings">ACCOUNT</string>
     <string name="messages">Messages</string>
     <string name="greeting">Welcome to Peter and Friends</string>
     <string name="register">Register</string>
