@@ -5,7 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="android:fontFamily">@font/rubik_regular</item>
+    </style>
+
+    <style name = "button_default" parent="Theme.AppCompat">
+        <item name = "android:background">@color/colorPrimaryDark</item>
+        <item name = "android:textColor">@color/colorSpearmint</item>
     </style>
 </resources>

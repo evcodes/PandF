@@ -4,8 +4,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.view.GravityCompat
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import com.eddyvarela.peter_and_friends.data.Post
 import com.eddyvarela.peter_and_friends.screen_fragments.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.create_posting_fragment.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +24,22 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(myOnNavigationItemSelectedListener)
 
         showFragmentByTag(HomeFragment.TAG, false)
+
+
     }
+
+
+    override fun onBackPressed() {
+//        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+//            drawer_layout.closeDrawer(GravityCompat.START)
+//        } else {
+            FirebaseAuth.getInstance().signOut()
+            super.onBackPressed()
+//        }
+
+    }
+
+
 
     private fun showFragmentByTag(tag: String, toBackStack: Boolean) {
         var fragment: Fragment? = supportFragmentManager.findFragmentByTag(tag)
@@ -58,6 +81,7 @@ class MainActivity : AppCompatActivity() {
             R.id.posting_tab-> {
                 showFragmentByTag(CreatePosting.TAG, true)
                 return@OnNavigationItemSelectedListener true
+
             }
         }
         false
