@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.Toast
 import com.eddyvarela.peter_and_friends.data.Mail
+import com.eddyvarela.peter_and_friends.data.ReceiverModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +24,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.Result
 import com.livinglifetechway.quickpermissions.annotations.WithPermissions
 import kotlinx.android.synthetic.main.mail_create.*
-import kotlinx.android.synthetic.main.mail_row.*
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import java.io.ByteArrayOutputStream
 import java.net.URLEncoder
@@ -133,6 +133,8 @@ class CreateMailActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
                 this@CreateMailActivity,
                 "Mail saved", Toast.LENGTH_LONG
             ).show()
+
+            ReceiverModel.receiver = etReceiver.text.toString()
 
             finish()
         }.addOnFailureListener {

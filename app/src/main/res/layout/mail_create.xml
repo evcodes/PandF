@@ -17,16 +17,6 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:orientation="vertical">
 
-        <!--<EditText-->
-                <!--android:id="@+id/etDate"-->
-                <!--android:layout_marginVertical="10dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:textColorHint="@color/colorPrimaryDark"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:hint="Title"-->
-                <!--android:maxLines="1"/>-->
-
-
         <EditText
                 android:id="@+id/etReceiver"
                 android:layout_marginVertical="10dp"

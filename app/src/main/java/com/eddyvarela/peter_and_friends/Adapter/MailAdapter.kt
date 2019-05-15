@@ -15,8 +15,9 @@ import kotlinx.android.synthetic.main.mail_row.view.*
 import java.util.*
 
 class MailsAdapter (
-    private val context: Context,
-    private val uId: String) : RecyclerView.Adapter<MailsAdapter.ViewHolder>() {
+    val context: Context,
+    val emailId: String,
+    val uId: String) : RecyclerView.Adapter<MailsAdapter.ViewHolder>() {
 
     private var mailsList = mutableListOf<Mail>()
     private var mailsKey = mutableListOf<String>()

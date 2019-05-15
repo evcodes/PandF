@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.eddyvarela.peter_and_friends.Adapter.MailsAdapter
 import com.eddyvarela.peter_and_friends.CreateMailActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Mail
+import com.eddyvarela.peter_and_friends.data.ReceiverModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.mail_fragment.*
@@ -24,6 +26,8 @@ class MailFragment: Fragment() {
     companion object {
         const val TAG="Mail_Fragment"
     }
+
+    lateinit var mailsAdapter: MailsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -44,8 +48,10 @@ class MailFragment: Fragment() {
         }
 
 
+        // CHANGE HERE
         mailsAdapter = MailsAdapter(
             this.context!!,
+            FirebaseAuth.getInstance().currentUser!!.email!!,
             FirebaseAuth.getInstance().currentUser!!.uid)
 
         val layoutManager = LinearLayoutManager(this.context)
@@ -54,25 +60,46 @@ class MailFragment: Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = mailsAdapter
         initMails()
-
     }
-
-    lateinit var mailsAdapter: MailsAdapter
-
 
     private fun initMails() {
         val db = FirebaseFirestore.getInstance()
 
-        val query = db.collection("mails")
+        //val query = db.collection("mails")
 
 //        val uidCombine = mailsAdapter.uId + "XbgB2Hu7YUQiD2iWGWZzJT1mmAh2"
 //
-//        // insert WHERE query here
-//        val from = db.collection("mails").whereEqualTo("uid", mailsAdapter.uId)
+        // insert WHERE query here
+        val from = db.collection("mails").whereEqualTo("uid", mailsAdapter.uId)
 //
-//        val to = db.collection("mails").whereEqualTo("uid", "XbgB2Hu7YUQiD2iWGWZzJT1mmAh2")
+        val to = db.collection("mails").whereEqualTo("receiver", mailsAdapter.emailId)
 
-        var allMailsListener = query.addSnapshotListener(
+        var allMailsListenerFrom = from.addSnapshotListener(
+            object: EventListener<QuerySnapshot> {
+                override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
+                    if (e != null) {
+                        Toast.makeText(this@MailFragment.context, "listen error: ${e.message}", Toast.LENGTH_LONG).show()
+                        return
+                    }
+
+                    for (dc in querySnapshot!!.getDocumentChanges()) {
+                        when (dc.getType()) {
+                            DocumentChange.Type.ADDED -> {
+                                val mail = dc.document.toObject(Mail::class.java)
+                                mailsAdapter.addMail(mail, dc.document.id)
+                            }
+                            DocumentChange.Type.MODIFIED -> {
+                                Toast.makeText(this@MailFragment.context, "update: ${dc.document.id}", Toast.LENGTH_LONG).show()
+                            }
+                            DocumentChange.Type.REMOVED -> {
+                                mailsAdapter.removeMailByKey(dc.document.id)
+                            }
+                        }
+                    }
+                }
+            })
+
+        var allMailsListenerTo = to.addSnapshotListener(
             object: EventListener<QuerySnapshot> {
                 override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
                     if (e != null) {
@@ -97,4 +124,6 @@ class MailFragment: Fragment() {
                 }
             })
     }
+
+
 }

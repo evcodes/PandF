@@ -10,3 +10,5 @@ data class Mail
      var title: String = "",
      var body: String = "",
      var imgUrl: String = "")
+
+
