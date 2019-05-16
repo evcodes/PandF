@@ -24,7 +24,7 @@
     <string name="contact">Contact</string>
     <string name="apply">Apply</string>
     <string name="create_update">Create</string>
-    <string name="post_job">Post Job</string>
+    <string name="post_job">POST JOB</string>
     <string name="job_details">Job Details</string>
     <string name="logistic_information">Logistic Information</string>
     <string name="new_job_posting_details">New Job Posting Details</string>
@@ -36,5 +36,7 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="image">Image</string>
+
     <string name="delete">Delete</string>
+    <string name="create_job_post">CREATE JOB POSTING</string>
 </resources>
