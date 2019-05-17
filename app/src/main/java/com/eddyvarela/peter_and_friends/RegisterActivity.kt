@@ -24,30 +24,36 @@ class RegisterActivity : AppCompatActivity(){
     }
     private fun userNameFromEmail(email: String) = email.substringBefore("@")
 
+    //check registration
     fun registerClick() {
         if (!isFormValid()) {
             return
         }
 
-        val userInfo = UserInformation(
-            FirebaseAuth.getInstance().currentUser!!.uid,
-            etFirstNameRegister.text.toString(),
-            etLastNameRegister.text.toString(),
-            0)
-
-        var userCollection = FirebaseFirestore.getInstance().collection("users")
-
+        //create user
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
             etEmailRegister.text.toString(), etPasswordRegister.text.toString()
         ).addOnSuccessListener {
             val user = it.user
 
+            //update user profile
             user.updateProfile(
                 UserProfileChangeRequest.Builder()
                     .setDisplayName(userNameFromEmail(user.email!!))
                     .build()
             )
 
+            //get users collection
+            var userCollection = FirebaseFirestore.getInstance().collection("users")
+
+            //collect users first and last name from input and give initial rating of 0.
+            val userInfo = UserInformation(
+                FirebaseAuth.getInstance().currentUser!!.uid,
+                etFirstNameRegister.text.toString(),
+                etLastNameRegister.text.toString(),
+                0)
+
+            //store users info in userCollection database
             userCollection.add(userInfo)//.addOnSuccessListener {
 //                Toast.makeText(this@RegisterActivity, "User ", Toast.LENGTH_LONG).show()
 //            }.addOnFailureListener{

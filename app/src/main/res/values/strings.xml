@@ -4,7 +4,7 @@
     <string name="home">HOME</string>
     <string name="settings">ACCOUNT</string>
     <string name="messages">MESSAGES</string>
-    <string name="greeting">Welcome to Peter and Friends</string>
+    <string name="greeting">Sign up to see gigs in your area.</string>
     <string name="register">Register</string>
     <string name="verify_password">Verify Password</string>
     <string name="password">Password</string>
