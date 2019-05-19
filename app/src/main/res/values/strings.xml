@@ -36,7 +36,14 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="image">Image</string>
-
     <string name="delete">Delete</string>
     <string name="create_job_post">CREATE JOB POSTING</string>
+    <string name="payment_hint">How much do you want to pay?</string>
+
+    <string name="author">author</string>
+    <string name="descriptive_text">Descriptive Text</string>
+    <string name="local_remote">Local/Remote</string>
+    <string name="datetime">DateTime</string>
+    <string name="pay_amt">Pay Amt</string>
+    <string name="detail">Details</string>
 </resources>

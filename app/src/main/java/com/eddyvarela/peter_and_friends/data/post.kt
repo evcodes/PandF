@@ -4,7 +4,10 @@ data class Post(
     var iod: String = "",
     var author: String = "",
     var title: String = "",
-    var description: String = ""
+    var description: String = "",
+    var dateOfJob:String = "",
+    var imgURL:String = "",
+    var payAmt:String =""
 )
 
 /*

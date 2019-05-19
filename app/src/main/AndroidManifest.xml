@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".JobDetailActivity"/>
         <activity android:name=".CreateMailActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".MainActivity"

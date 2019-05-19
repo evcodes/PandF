@@ -1,7 +1,5 @@
 package com.eddyvarela.peter_and_friends
 
-
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -21,15 +19,12 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.zxing.Result
-import com.livinglifetechway.quickpermissions.annotations.WithPermissions
 import kotlinx.android.synthetic.main.mail_create.*
-import me.dm7.barcodescanner.zxing.ZXingScannerView
 import java.io.ByteArrayOutputStream
 import java.net.URLEncoder
 import java.util.*
 
-class CreateMailActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
+class CreateMailActivity : AppCompatActivity() {
 
     companion object {
         private const val PERMISSION_REQUEST_CODE = 101
@@ -47,10 +42,6 @@ class CreateMailActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
             startActivityForResult(intentStartCamera, CAMERA_REQUEST_CODE)
         }
 
-        btnQR.setOnClickListener {
-            zxingView.visibility = View.VISIBLE
-        }
-
         requestNeededPermission()
     }
 
@@ -62,32 +53,16 @@ class CreateMailActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         }
     }
 
-
     private fun requestNeededPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    android.Manifest.permission.CAMERA
-                )
-            ) {
-                Toast.makeText(
-                    this,
-                    "I need it for camera", Toast.LENGTH_SHORT
-                ).show()
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.CAMERA)){
+                Toast.makeText(this,"I need it for camera", Toast.LENGTH_SHORT).show()
             }
 
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.CAMERA),
-                PERMISSION_REQUEST_CODE
-            )
-        } else {
-            // we already have permission
-        }
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), PERMISSION_REQUEST_CODE)}
+        else {
+            // we already have our permission
+         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -114,7 +89,7 @@ class CreateMailActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         val mail = Mail(
             FirebaseAuth.getInstance().currentUser!!.uid,
             //TODO
-            Date(1,1,1,1,1,1),
+            Date(1, 1, 1, 1, 1, 1),
             FirebaseAuth.getInstance().currentUser!!.email!!,
             etTitle.text.toString(),
             etReceiver.text.toString(),
@@ -167,36 +142,8 @@ class CreateMailActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
                     override fun onComplete(task: Task<Uri>) {
                         uploadMail(task.result.toString())
                     }
-                })
-            }
-    }
-
-    // QR Code
-
-    public override fun onResume() {
-        super.onResume()
-        startCamera()
-    }
-
-    @WithPermissions(
-        permissions = [Manifest.permission.CAMERA]
-    )
-    private fun startCamera() {
-        zxingView.setResultHandler(this) // Register ourselves as a handler for scan results.
-        zxingView.startCamera()          // Start camera on resume
-    }
-
-    public override fun onPause() {
-        super.onPause()
-        zxingView.stopCamera()           // Stop camera on pause
-    }
-
-    override fun handleResult(rawResult: Result) {
-
-        val res: String = rawResult.text
-        etBody.setText(res)
-
-        // If you would like to resume scanning, call this method below:
-        zxingView.resumeCameraPreview(this)
+                }
+            )
+        }
     }
 }

@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.create_posting_fragment.*
 
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,23 +34,22 @@ class MainActivity : AppCompatActivity() {
 //        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
 //            drawer_layout.closeDrawer(GravityCompat.START)
 //        } else {
-            FirebaseAuth.getInstance().signOut()
-            super.onBackPressed()
+//            FirebaseAuth.getInstance().signOut()
+
+        super.onBackPressed()
 //        }
 
     }
 
-
-
     private fun showFragmentByTag(tag: String, toBackStack: Boolean) {
         var fragment: Fragment? = supportFragmentManager.findFragmentByTag(tag)
+
         if (fragment == null) {
             when (tag) {
                 HomeFragment.TAG -> fragment = HomeFragment()
                 MailFragment.TAG -> fragment = MailFragment()
                 CreatePosting.TAG -> fragment = CreatePosting()
                 AccountFragment.TAG -> fragment = AccountFragment()
-                ApplyFragment.TAG -> fragment = ApplyFragment()
             }
         }
 
@@ -71,14 +71,13 @@ class MainActivity : AppCompatActivity() {
                 showFragmentByTag(MailFragment.TAG, true)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.settings_tab-> {
+            R.id.settings_tab -> {
                 showFragmentByTag(AccountFragment.TAG, true)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.posting_tab-> {
+            R.id.posting_tab -> {
                 showFragmentByTag(CreatePosting.TAG, true)
                 return@OnNavigationItemSelectedListener true
-
             }
         }
         false

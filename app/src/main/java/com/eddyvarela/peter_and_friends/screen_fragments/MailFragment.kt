@@ -19,12 +19,10 @@ import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.mail_fragment.*
 
 
-
-
-class MailFragment: Fragment() {
+class MailFragment : Fragment() {
 
     companion object {
-        const val TAG="Mail_Fragment"
+        const val TAG = "Mail_Fragment"
     }
 
     lateinit var mailsAdapter: MailsAdapter
@@ -42,8 +40,10 @@ class MailFragment: Fragment() {
     private fun init() {
         fab.setOnClickListener { view ->
             startActivity(
-                Intent(this@MailFragment.context,
-                    CreateMailActivity::class.java)
+                Intent(
+                    this@MailFragment.context,
+                    CreateMailActivity::class.java
+                )
             )
         }
 
@@ -52,7 +52,8 @@ class MailFragment: Fragment() {
         mailsAdapter = MailsAdapter(
             this.context!!,
             FirebaseAuth.getInstance().currentUser!!.email!!,
-            FirebaseAuth.getInstance().currentUser!!.uid)
+            FirebaseAuth.getInstance().currentUser!!.uid
+        )
 
         val layoutManager = LinearLayoutManager(this.context)
         layoutManager.reverseLayout = true
@@ -75,21 +76,26 @@ class MailFragment: Fragment() {
         val to = db.collection("mails").whereEqualTo("receiver", mailsAdapter.emailId)
 
         var allMailsListenerFrom = from.addSnapshotListener(
-            object: EventListener<QuerySnapshot> {
+            object : EventListener<QuerySnapshot> {
                 override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
                     if (e != null) {
-                        Toast.makeText(this@MailFragment.context, "listen error: ${e.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MailFragment.context, "listen error: ${e.message}", Toast.LENGTH_LONG)
+                            .show()
                         return
                     }
 
                     for (dc in querySnapshot!!.getDocumentChanges()) {
-                        when (dc.getType()) {
+                        when (dc.type) {
                             DocumentChange.Type.ADDED -> {
                                 val mail = dc.document.toObject(Mail::class.java)
                                 mailsAdapter.addMail(mail, dc.document.id)
                             }
                             DocumentChange.Type.MODIFIED -> {
-                                Toast.makeText(this@MailFragment.context, "update: ${dc.document.id}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    this@MailFragment.context,
+                                    "update: ${dc.document.id}",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                             DocumentChange.Type.REMOVED -> {
                                 mailsAdapter.removeMailByKey(dc.document.id)
@@ -100,10 +106,11 @@ class MailFragment: Fragment() {
             })
 
         var allMailsListenerTo = to.addSnapshotListener(
-            object: EventListener<QuerySnapshot> {
+            object : EventListener<QuerySnapshot> {
                 override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
                     if (e != null) {
-                        Toast.makeText(this@MailFragment.context, "listen error: ${e.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MailFragment.context, "listen error: ${e.message}", Toast.LENGTH_LONG)
+                            .show()
                         return
                     }
 
@@ -114,7 +121,11 @@ class MailFragment: Fragment() {
                                 mailsAdapter.addMail(mail, dc.document.id)
                             }
                             DocumentChange.Type.MODIFIED -> {
-                                Toast.makeText(this@MailFragment.context, "update: ${dc.document.id}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    this@MailFragment.context,
+                                    "update: ${dc.document.id}",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                             DocumentChange.Type.REMOVED -> {
                                 mailsAdapter.removeMailByKey(dc.document.id)
