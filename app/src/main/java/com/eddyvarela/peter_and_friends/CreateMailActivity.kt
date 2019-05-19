@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.eddyvarela.peter_and_friends.data.Mail
@@ -22,6 +23,8 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.mail_create.*
 import java.io.ByteArrayOutputStream
 import java.net.URLEncoder
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateMailActivity : AppCompatActivity() {
@@ -32,6 +35,7 @@ class CreateMailActivity : AppCompatActivity() {
     }
 
     var uploadBitmap: Bitmap? = null
+    var timeClickStr: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +82,10 @@ class CreateMailActivity : AppCompatActivity() {
     }
 
     fun sendClick(v: View) {
+        var timeClick = Calendar.getInstance().getTime()
+        var dateFormat: DateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        timeClickStr = dateFormat.format(timeClick)
+
         if (imgAttach.visibility == View.GONE) {
             uploadMail()
         } else {
@@ -88,11 +96,10 @@ class CreateMailActivity : AppCompatActivity() {
     fun uploadMail(imageUrl: String = "") {
         val mail = Mail(
             FirebaseAuth.getInstance().currentUser!!.uid,
-            //TODO
-            Date(1, 1, 1, 1, 1, 1),
+            timeClickStr,
             FirebaseAuth.getInstance().currentUser!!.email!!,
-            etTitle.text.toString(),
             etReceiver.text.toString(),
+            etTitle.text.toString(),
             etBody.text.toString(),
             imageUrl
         )

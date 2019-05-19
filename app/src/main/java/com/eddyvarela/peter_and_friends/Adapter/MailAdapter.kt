@@ -37,7 +37,7 @@ class MailsAdapter (
         val (authorId, date, author, receiver, title, body, imgUrl) =
             mailsList[holder.adapterPosition]
 
-        holder.tvDate.text = date.toString()
+        holder.tvDate.text = date
         holder.tvAuthor.text = author
         holder.tvReceiver.text = receiver
         holder.tvTitle.text = title
@@ -100,11 +100,10 @@ class MailsAdapter (
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val rowMail: LinearLayout = itemView.rowMail
         val tvDate: TextView = itemView.tvDate
         val tvAuthor: TextView = itemView.tvAuthor
-        val tvTitle: TextView = itemView.tvTitle
         val tvReceiver: TextView = itemView.tvReceiver
+        val tvTitle: TextView = itemView.tvTitle
         val tvBody: TextView = itemView.tvBody
         val btnDeleteMail: Button = itemView.btnDeleteMail
         val ivPhoto: ImageView = itemView.ivPhoto
