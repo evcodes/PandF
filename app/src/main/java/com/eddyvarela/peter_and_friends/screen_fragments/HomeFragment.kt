@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.eddyvarela.peter_and_friends.Adapter.PostAdapter
-import com.eddyvarela.peter_and_friends.MainActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Post
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {

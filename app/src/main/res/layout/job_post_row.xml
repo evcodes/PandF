@@ -67,8 +67,6 @@
             android:background="@drawable/btn_default"
             android:text="@string/detail"
             style="@style/button_default"
-
-
             app:layout_constraintEnd_toStartOf="@+id/ivJobPostRowImg"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"

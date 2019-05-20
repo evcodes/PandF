@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
             toRegisterActivity()
         }
 
-        loginButton.setOnClickListener {
+        btnLogin.setOnClickListener {
             loginUser()
         }
     }

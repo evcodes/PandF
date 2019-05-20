@@ -19,7 +19,9 @@ import android.widget.DatePicker
 import android.widget.Toast
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Post
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.create_posting_fragment.*
@@ -27,6 +29,8 @@ import kotlinx.android.synthetic.main.job_post_row.*
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
 import java.net.URLEncoder
+import java.sql.Time
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CreatePosting : DialogFragment() {
@@ -96,7 +100,6 @@ class CreatePosting : DialogFragment() {
         }
     }
 
-
     fun sendClick(v: View) {
         if (ivJobImg.visibility == View.GONE) {
             uploadPost()
@@ -107,19 +110,25 @@ class CreatePosting : DialogFragment() {
 
     fun uploadPost(imgURL: String = "") {
 
+        var db = FirebaseFirestore.getInstance()
+        var postCollection = db.collection("posts")
+
+
         var payment:Float = etJobPayment.text.toString().toFloat()
+
+        var formatted = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        var timeStamp = formatted.format(Date())
+
         val post = Post(
             FirebaseAuth.getInstance().currentUser!!.uid,
+            timeStamp,
             FirebaseAuth.getInstance().currentUser!!.displayName!!,
             etJobTitle.text.toString(),
             etJobDescription.text.toString(),
             "",
                     imgURL,
-            "%.2f".format(payment).toString()
-
+            "%.2f".format(payment)
         )
-
-        var postCollection = FirebaseFirestore.getInstance().collection("posts")
 
         postCollection.add(post).addOnSuccessListener {
             Toast.makeText(activity, "Post saved successfully! ", Toast.LENGTH_LONG).show()
@@ -148,18 +157,5 @@ class CreatePosting : DialogFragment() {
             }
     }
 
-
-//    override fun onCreateDialog(savedInstanceState: Bundle?) : Dialog {
-//        val cal = Calendar.getInstance()
-//        val year = cal.get(Calendar.YEAR)
-//        val month = cal.get(Calendar.MONTH)
-//        val day = cal.get(Calendar.DAY_OF_MONTH)
-//
-//        return DatePickerDialog(activity, this, year, month, day)
-//    }
-
-//
-//    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-//    }
 
 }

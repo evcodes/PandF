@@ -132,6 +132,7 @@
 
 
         <Button
+                android:id="@+id/btnJobApply"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:text="@string/apply"
