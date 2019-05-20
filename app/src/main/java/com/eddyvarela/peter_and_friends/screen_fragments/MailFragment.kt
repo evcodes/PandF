@@ -68,11 +68,9 @@ class MailFragment : Fragment() {
 
         //val query = db.collection("mails")
 
-//        val uidCombine = mailsAdapter.uId + "XbgB2Hu7YUQiD2iWGWZzJT1mmAh2"
-//
         // insert WHERE query here
         val from = db.collection("mails").whereEqualTo("uid", mailsAdapter.uId)
-//
+
         val to = db.collection("mails").whereEqualTo("receiver", mailsAdapter.emailId)
 
         var allMailsListenerFrom = from.addSnapshotListener(

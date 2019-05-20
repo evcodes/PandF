@@ -21,10 +21,6 @@ class Splash : AppCompatActivity() {
         Handler().postDelayed( {
             startActivity(Intent(this@Splash, LoginActivity::class.java))
             finish()
-        }, 5000)
-
-        // TODO: Change to 3000 in final phrase
-
-
+        }, 3000)
     }
 }
