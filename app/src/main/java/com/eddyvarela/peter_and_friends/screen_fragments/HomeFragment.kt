@@ -46,7 +46,6 @@ class HomeFragment : Fragment() {
     private fun initPosts() {
 
         val db = FirebaseFirestore.getInstance()
-
         val query = db.collection("posts")
 
         var allPostsListener = query.addSnapshotListener(
@@ -56,7 +55,6 @@ class HomeFragment : Fragment() {
                         Toast.makeText(context, "listen error: ${e.message}", Toast.LENGTH_LONG).show()
                         return
                     }
-
                     for (dc in querySnapshot!!.documentChanges) {
                         when (dc.type) {
                             DocumentChange.Type.ADDED -> {

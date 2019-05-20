@@ -22,54 +22,6 @@ class RegisterActivity : AppCompatActivity(){
         }
 
     }
-    private fun userNameFromEmail(email: String) = email.substringBefore("@")
-
-    //check registration
-    fun registerClick() {
-        if (!isFormValid()) {
-            return
-        }
-
-        //create user
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-            etEmailRegister.text.toString(), etPasswordRegister.text.toString()
-        ).addOnSuccessListener {
-            val user = it.user
-
-            //update user profile
-            user.updateProfile(
-                UserProfileChangeRequest.Builder()
-                    .setDisplayName(userNameFromEmail(user.email!!))
-                    .build()
-            )
-
-            //get users collection
-            var userCollection = FirebaseFirestore.getInstance().collection("users")
-
-            //collect users first and last name from input and give initial rating of 0.
-            val userInfo = UserInformation(
-                FirebaseAuth.getInstance().currentUser!!.uid,
-                etFirstNameRegister.text.toString(),
-                etLastNameRegister.text.toString(),
-                0)
-
-            //store users info in userCollection database
-            userCollection.add(userInfo)//.addOnSuccessListener {
-//                Toast.makeText(this@RegisterActivity, "User ", Toast.LENGTH_LONG).show()
-//            }.addOnFailureListener{
-//                Toast.makeText(this@RegisterActivity, "Post was not saved: ${it.message}", Toast.LENGTH_LONG).show()
-//            }
-
-            Toast.makeText(this@RegisterActivity,
-                "Registration successful! Please log in now.", Toast.LENGTH_LONG).show()
-
-            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-
-        }.addOnFailureListener{
-            Toast.makeText(this@RegisterActivity,
-                "Registration failed. ${it.message}", Toast.LENGTH_LONG).show()
-        }
-    }
 
     private fun isFormValid(): Boolean {
         return when {
@@ -100,4 +52,48 @@ class RegisterActivity : AppCompatActivity(){
             else -> true
         }
     }
+
+    private fun userNameFromEmail(email: String) = email.substringBefore("@")
+
+    private fun registerClick() {
+        if (!isFormValid()) {
+            return
+        }
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+            etEmailRegister.text.toString(), etPasswordRegister.text.toString()
+        ).addOnSuccessListener {
+            val user = it.user
+
+            user.updateProfile(
+                UserProfileChangeRequest.Builder()
+                    .setDisplayName(userNameFromEmail(user.email!!))
+                    .build()
+            )
+
+            var userCollection = FirebaseFirestore.getInstance().collection("users")
+
+            val userInfo = UserInformation(
+                FirebaseAuth.getInstance().currentUser!!.uid,
+                etFirstNameRegister.text.toString(),
+                etLastNameRegister.text.toString(),
+                "",
+                "",
+                "",
+                0)
+
+            userCollection.add(userInfo)
+
+            Toast.makeText(this@RegisterActivity,
+                "Registration successful! Please log in now.", Toast.LENGTH_LONG).show()
+
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+
+        }.addOnFailureListener{
+            Toast.makeText(this@RegisterActivity,
+                "Registration failed. ${it.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+
 }

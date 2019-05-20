@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.*
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Mail
@@ -55,12 +55,12 @@ class MailsAdapter (
             holder.btnDeleteMail.visibility = View.GONE
         }
 
-        if (imgUrl.isNotEmpty()) {
-            holder.ivPhoto.visibility = View.VISIBLE
-            Glide.with(context).load(imgUrl).into(holder.ivPhoto)
-        } else {
-            holder.ivPhoto.visibility = View.GONE
-        }
+//        if (imgUrl.isNotEmpty()) {
+//            holder.ivPhoto.visibility = View.VISIBLE
+//            Glide.with(context).load(imgUrl).into(holder.ivPhoto)
+//        } else {
+//            holder.ivPhoto.visibility = View.GONE
+//        }
 
         setAnimation(holder.itemView, position)
     }
