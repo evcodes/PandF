@@ -14,12 +14,21 @@ import com.eddyvarela.peter_and_friends.CreateMailActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Mail
 import com.eddyvarela.peter_and_friends.data.ReceiverModel
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.EventListener
+import kotlinx.android.synthetic.main.apply_fragment.*
 import kotlinx.android.synthetic.main.mail_fragment.*
+import kotlinx.android.synthetic.main.mail_row.*
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.Comparator
 
 
 class MailFragment : Fragment() {
+
 
     companion object {
         const val TAG = "Mail_Fragment"
@@ -38,6 +47,13 @@ class MailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init()
     }
+
+//    var dateFormat: DateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+//    override fun compare(o1: String?, o2: String?): Int {
+//        return dateFormat.parse(o1).compareTo(dateFormat.parse(o2))
+//    }
+
+
 
     private fun init() {
         fab.setOnClickListener { view ->
@@ -75,6 +91,7 @@ class MailFragment : Fragment() {
 
         val to = db.collection("mails").whereEqualTo("receiver", mailsAdapter.emailId)
 
+
         var allMailsListenerFrom = from.addSnapshotListener(
             object : EventListener<QuerySnapshot> {
                 override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
@@ -84,7 +101,7 @@ class MailFragment : Fragment() {
                         return
                     }
 
-                    for (dc in querySnapshot!!.getDocumentChanges()) {
+                    for (dc in querySnapshot!!.documentChanges) {
                         when (dc.type) {
                             DocumentChange.Type.ADDED -> {
                                 val mail = dc.document.toObject(Mail::class.java)
@@ -105,6 +122,7 @@ class MailFragment : Fragment() {
                 }
             })
 
+
         var allMailsListenerTo = to.addSnapshotListener(
             object : EventListener<QuerySnapshot> {
                 override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
@@ -114,8 +132,8 @@ class MailFragment : Fragment() {
                         return
                     }
 
-                    for (dc in querySnapshot!!.getDocumentChanges()) {
-                        when (dc.getType()) {
+                    for (dc in querySnapshot!!.documentChanges) {
+                        when (dc.type) {
                             DocumentChange.Type.ADDED -> {
                                 val mail = dc.document.toObject(Mail::class.java)
                                 mailsAdapter.addMail(mail, dc.document.id)
@@ -134,7 +152,19 @@ class MailFragment : Fragment() {
                     }
                 }
             })
-    }
+//
+//        val fromQuery = from.get()
+//        val toQuery = to.get()
+//
+//        val both = Tasks.whenAllSuccess<Any>(fromQuery, toQuery).addOnSuccessListener {
+//
+//        }
 
+
+
+//
+//        var result = both.getResult()
+//        result?.sortBy { tvDate.toString() }
+    }
 
 }

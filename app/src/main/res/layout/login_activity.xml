@@ -3,7 +3,7 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                            android:background="@color/colorSpearmint">
+                                             android:background="@color/colorSpearmint">
     <ImageView
             android:layout_width="239dp"
             android:layout_height="236dp"
@@ -23,18 +23,25 @@
             android:layout_width="348dp"
             android:layout_height="264dp"
             android:src="@drawable/white_rectangle"
-
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.489" android:layout_marginTop="12dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.489"
+            android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
-    <ImageView android:layout_width="30dp" android:layout_height="30dp"
+    <ImageView android:layout_width="30dp"
+               android:layout_height="30dp"
                android:src="@drawable/account"
                app:layout_constraintEnd_toStartOf="@+id/etEmail"
-               app:layout_constraintTop_toTopOf="@+id/etEmail" android:id="@+id/imageView3"
-               android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginTop="4dp"/>
+               app:layout_constraintTop_toTopOf="@+id/etEmail"
+               android:id="@+id/imageView3"
+               android:layout_marginEnd="8dp"
+               android:layout_marginRight="8dp"
+               android:layout_marginTop="4dp"/>
 
     <ImageView android:layout_width="30dp" android:layout_height="30dp"
                android:src="@drawable/key"
@@ -77,11 +84,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
     <Button
-            android:text="Log in"
+            android:text="@string/log_in"
             android:layout_width="0dp"
             android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:id="@+id/loginButton"
+            android:id="@+id/btnLogin"
             android:layout_marginTop="32dp"
             android:background="@drawable/rectangle"
             android:textColor="@android:color/white"
@@ -99,7 +106,7 @@
             android:id="@+id/noAccount"
 
             android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="0.352"/>
@@ -112,7 +119,7 @@
             android:id="@+id/registerButton"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="0.0"

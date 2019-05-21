@@ -46,4 +46,6 @@
     <string name="datetime">DateTime</string>
     <string name="pay_amt">Pay Amt</string>
     <string name="detail">Details</string>
+    <string name="short_app_name"><![CDATA[P&F]]></string>
+    <string name="log_in">Log in</string>
 </resources>

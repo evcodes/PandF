@@ -34,7 +34,7 @@ class PostAdapter(
     override fun getItemCount() = postsList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val (authorId, author, title, description, dateTime, imgURL, payAmt) =
+        val (authorId, timeStamp, author, title, description, jobDate, imgURL, payAmt) =
             postsList[holder.adapterPosition]
 
         holder.tvAuthor.text = author
@@ -48,7 +48,8 @@ class PostAdapter(
             intentDetails.putExtra("jobAuthor", postsList[holder.adapterPosition].author)
             intentDetails.putExtra("jobDescription", postsList[holder.adapterPosition].description)
             intentDetails.putExtra("jobPayAmt", postsList[holder.adapterPosition].payAmt)
-
+            intentDetails.putExtra("jobID", postsList[holder.adapterPosition].iod)
+            intentDetails.putExtra("time", postsList[holder.adapterPosition].time)
             startActivity(context,intentDetails,null)
         }
 

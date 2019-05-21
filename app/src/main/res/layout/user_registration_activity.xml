@@ -23,14 +23,15 @@
             android:contentDescription=""
             android:id="@+id/btn_capture_photo"
             android:layout_width="348dp"
-            android:layout_height="454dp"
+            android:layout_height="0dp"
             android:src="@drawable/white_rectangle"
 
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             app:layout_constraintHorizontal_bias="0.489" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/signUpDesc"/>
+            app:layout_constraintTop_toBottomOf="@+id/signUpDesc" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
 
 
     <ImageView android:layout_width="30dp" android:layout_height="30dp"
