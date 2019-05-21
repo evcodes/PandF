@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -132,6 +133,7 @@ class CreatePosting : DialogFragment() {
 
         postCollection.add(post).addOnSuccessListener {
             Toast.makeText(activity, "Post saved successfully! ", Toast.LENGTH_LONG).show()
+
         }.addOnFailureListener {
             Toast.makeText(activity, "Post was not saved: ${it.message}", Toast.LENGTH_LONG).show()
         }
