@@ -24,41 +24,83 @@ class JobDetailActivity : AppCompatActivity() {
         tvJobInfoAuthor.text = intent.getStringExtra("jobAuthor").toString()
         tvJobInfoPayAmt.text = intent.getStringExtra("jobPayAmt").toString()
 
-    btnJobApply.setOnClickListener {
-        var time = intent.getStringExtra("time").toString()
-            applyToJob(jobID,time)
+        btnJobApply.setOnClickListener {
+            var time = intent.getStringExtra("time").toString()
+            applyToJob(jobID, time)
         }
     }
 
-    fun applyToJob(jobID:String,jobTime:String){
+    fun applyToJob(jobID: String, jobTime: String) {
 
-
-        val writeMap  = hashMapOf("username" to "eddy")
-        val username: Map<String,String> = HashMap(writeMap)
+        val writeMap = hashMapOf("username" to FirebaseAuth.getInstance().currentUser!!.displayName!!)
+        val username: Map<String, String> = HashMap(writeMap)
         var db = FirebaseFirestore.getInstance()
 
         var s = db.collection("posts")
-            .whereEqualTo("iod",jobID)
+            .whereEqualTo("iod", jobID)
             .whereEqualTo("time", jobTime)
             .get()
             .addOnSuccessListener { documents ->
 
-                for (doc in documents){
+                for (doc in documents) {
                     if (doc != null) {
-                        db.collection("posts").document(doc.id).collection("applicants").add(username)
-                        Toast.makeText(this,doc.id,Toast.LENGTH_LONG).show()
 
+                        if (applyPossible(doc.id)) {
+                            db.collection("posts").document(doc.id).collection("applicants")
+                                .document(FirebaseAuth.getInstance().uid.toString())
+                                .set(writeMap as Map<String, Any>)
+                            Toast.makeText(this, "successfully applied to job", Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(this, "cannot apply to job", Toast.LENGTH_LONG).show()
 
+                        }
                     }
                 }
+            }
+    }
+
+    fun applyPossible(docID: String): Boolean {
+        var applied = !checkIfApplied(docID)
+        return applied
+    }
+
+    fun checkIfApplied(docID: String): Boolean {
+
+        var applied = false
+        var applicant =
+            FirebaseFirestore.getInstance()
+                .collection("posts")
+                .document(docID)
+                .collection("applicants")
+                .document(FirebaseAuth.getInstance().currentUser!!.uid)
+                .addSnapshotListener { documentSnapshot, e ->
+
+                    Log.d("snap", documentSnapshot.toString())
+                    Log.d("snap", e.toString())
+                        if (documentSnapshot != null) {
+//                        Toast.makeText(this, "Sorry, you cannot apply to a job more than once", Toast.LENGTH_LONG)
+//                            .show()
+                        applied = true
+                    }
+                }
+        return applied
+    }
+
+
+    fun checkIfJobOwner(docID: String): Boolean {
+
+        var iod = ""
+        var applicant =
+            FirebaseFirestore.getInstance().collection("posts")
+                .document(docID).get()
+                .addOnSuccessListener { document ->
+                    iod = document.get("iod").toString()!!
+                }
+        var currentID = FirebaseAuth.getInstance().currentUser?.uid!!.toString()
+
+        if (iod != currentID) {
+            Toast.makeText(this, "this is not your job", Toast.LENGTH_LONG).show()
         }
+        return (iod != currentID)
     }
-
-//        var job= db
-//            .collection("posts").document(jobID)
-//            .collection("applicants")
-
-//        Toast.makeText(this,,Toast.LENGTH_LONG).show()
-
-
-    }
+}
