@@ -1,9 +1,12 @@
 package com.eddyvarela.peter_and_friends
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -12,7 +15,9 @@ import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.job_detail_layout.*
 import kotlinx.android.synthetic.main.mail_row.*
 
-class JobDetailActivity : AppCompatActivity() {
+class JobDetailActivity  : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +28,16 @@ class JobDetailActivity : AppCompatActivity() {
         tvJobInfoDescription.text = intent.getStringExtra("jobDescription").toString()
         tvJobInfoAuthor.text = intent.getStringExtra("jobAuthor").toString()
         tvJobInfoPayAmt.text = intent.getStringExtra("jobPayAmt").toString()
+
+        var imgUrl = intent.getStringExtra("imgUrl")
+
+        if (imgUrl.isNotEmpty()) {
+            ivJobDetails.visibility = View.VISIBLE
+            Glide.with(this).load(imgUrl).into(ivJobDetails)
+            //Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/peter-and-friends-ce246.appspot.com/o/images%2F06cb763d-47f3-4514-b9bb-34d3e6c276b7.jpg?alt=media&token=a8b466e7-a06d-472a-8920-c275fe691732").into(ivJobDetails)
+        } else {
+            ivJobDetails.visibility = View.GONE
+        }
 
         btnJobApply.setOnClickListener {
             var time = intent.getStringExtra("time").toString()
@@ -86,9 +101,7 @@ class JobDetailActivity : AppCompatActivity() {
         return applied
     }
 
-
     fun checkIfJobOwner(docID: String): Boolean {
-
         var iod = ""
         var applicant =
             FirebaseFirestore.getInstance().collection("posts")

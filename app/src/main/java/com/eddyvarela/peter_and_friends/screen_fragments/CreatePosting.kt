@@ -1,6 +1,7 @@
 package com.eddyvarela.peter_and_friends.screen_fragments
 
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -18,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.Toast
+import com.eddyvarela.peter_and_friends.CreateMailActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Post
 import com.google.firebase.Timestamp
@@ -27,6 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.create_posting_fragment.*
 import kotlinx.android.synthetic.main.job_post_row.*
+import kotlinx.android.synthetic.main.mail_create.*
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
 import java.net.URLEncoder
@@ -154,10 +157,17 @@ class CreatePosting : DialogFragment() {
             .addOnFailureListener { exception ->
                 Toast.makeText(context, exception.message, Toast.LENGTH_SHORT).show()
             }.addOnSuccessListener {
-
+                Toast.makeText(context, "On success" , Toast.LENGTH_SHORT).show()
                 newImagesRef.downloadUrl.addOnCompleteListener { task -> uploadPost(task.result.toString()) }
             }
     }
-
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        if (requestCode == CreatePosting.CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+//            uploadBitmap = data!!.extras.get("data") as Bitmap
+//            imgAttach.setImageBitmap(uploadBitmap)
+//            imgAttach.visibility = View.VISIBLE
+//        }
+//    }
 
 }
