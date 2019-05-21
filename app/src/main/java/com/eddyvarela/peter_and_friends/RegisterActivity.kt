@@ -25,7 +25,7 @@ class RegisterActivity : AppCompatActivity(){
     private fun userNameFromEmail(email: String) = email.substringBefore("@")
 
     //check registration
-    fun registerClick() {
+    private fun registerClick() {
         if (!isFormValid()) {
             return
         }

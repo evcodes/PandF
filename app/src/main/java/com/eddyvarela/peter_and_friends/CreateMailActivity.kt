@@ -12,6 +12,8 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.eddyvarela.peter_and_friends.data.Mail
 import com.eddyvarela.peter_and_friends.data.ReceiverModel
@@ -21,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.mail_create.*
+import kotlinx.android.synthetic.main.mail_row.*
 import java.io.ByteArrayOutputStream
 import java.net.URLEncoder
 import java.text.DateFormat
@@ -35,7 +38,7 @@ class CreateMailActivity : AppCompatActivity() {
     }
 
     var uploadBitmap: Bitmap? = null
-    var timeClickStr: String = ""
+    private var timeClickStr: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
