@@ -50,6 +50,7 @@ class PostAdapter(
             intentDetails.putExtra("jobPayAmt", postsList[holder.adapterPosition].payAmt)
             intentDetails.putExtra("jobID", postsList[holder.adapterPosition].iod)
             intentDetails.putExtra("time", postsList[holder.adapterPosition].time)
+            intentDetails.putExtra("imgUrl", postsList[holder.adapterPosition].imgURL)
             startActivity(context,intentDetails,null)
         }
 

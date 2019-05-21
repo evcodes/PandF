@@ -152,19 +152,7 @@ class MailFragment : Fragment() {
                     }
                 }
             })
-//
-//        val fromQuery = from.get()
-//        val toQuery = to.get()
-//
-//        val both = Tasks.whenAllSuccess<Any>(fromQuery, toQuery).addOnSuccessListener {
-//
-//        }
 
-
-
-//
-//        var result = both.getResult()
-//        result?.sortBy { tvDate.toString() }
     }
 
 }
