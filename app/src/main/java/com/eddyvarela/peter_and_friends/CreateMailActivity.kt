@@ -138,7 +138,7 @@ class CreateMailActivity : AppCompatActivity() {
         uploadBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val imageInBytes = baos.toByteArray()
 
-        val storageRef = FirebaseStorage.getInstance().getReference()
+        val storageRef = FirebaseStorage.getInstance().reference
         val newImage = URLEncoder.encode(UUID.randomUUID().toString(), "UTF-8") + ".jpg"
         val newImagesRef = storageRef.child("images/$newImage")
 

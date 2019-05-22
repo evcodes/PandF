@@ -26,6 +26,7 @@ class AccountFragment: Fragment() {
 
     lateinit var userAdapter: UserAdapter
 
+
     companion object {
         const val TAG="Account_Fragment"
     }

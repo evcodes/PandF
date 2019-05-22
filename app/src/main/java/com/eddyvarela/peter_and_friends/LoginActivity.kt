@@ -9,6 +9,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.login_activity.*
+import java.lang.Thread.sleep
 
 
 private var mAuth: FirebaseAuth? = null
@@ -35,15 +36,20 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser() {
-        if (!isFormValid()){
+        if (!isFormValid()) {
             return
         }
+        btnLogin.visibility = View.INVISIBLE
+        pbLogin.visibility = View.VISIBLE
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(
             etEmail.text.toString(), etPassword.text.toString()
         ).addOnCompleteListener {
             if (it.isSuccessful) {
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                sleep(2000)
+                pbLogin.visibility = View.INVISIBLE
+                btnLogin.visibility = View.VISIBLE
 
             } else {
                 Toast.makeText(
@@ -59,6 +65,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
+
     }
 
     private fun toRegisterActivity() {

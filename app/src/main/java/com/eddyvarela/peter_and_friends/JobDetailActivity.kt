@@ -64,9 +64,9 @@ class JobDetailActivity  : AppCompatActivity() {
                             db.collection("posts").document(doc.id).collection("applicants")
                                 .document(FirebaseAuth.getInstance().uid.toString())
                                 .set(writeMap as Map<String, Any>)
-                            Toast.makeText(this, "successfully applied to job", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "successfully applied to job", Toast.LENGTH_SHORT).show()
                         }else{
-                            Toast.makeText(this, "cannot apply to job", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "cannot apply to jobASDFASFASFDASFASDFASDFas", Toast.LENGTH_LONG).show()
 
                         }
                     }
@@ -88,13 +88,14 @@ class JobDetailActivity  : AppCompatActivity() {
                 .document(docID)
                 .collection("applicants")
                 .document(FirebaseAuth.getInstance().currentUser!!.uid)
+
                 .addSnapshotListener { documentSnapshot, e ->
 
                     Log.d("snap", documentSnapshot.toString())
                     Log.d("snap", e.toString())
                         if (documentSnapshot != null) {
-//                        Toast.makeText(this, "Sorry, you cannot apply to a job more than once", Toast.LENGTH_LONG)
-//                            .show()
+                        Toast.makeText(this, "Sorry, you cannot apply to a job more than once", Toast.LENGTH_LONG)
+                         .show()
                         applied = true
                     }
                 }
@@ -112,7 +113,7 @@ class JobDetailActivity  : AppCompatActivity() {
         var currentID = FirebaseAuth.getInstance().currentUser?.uid!!.toString()
 
         if (iod != currentID) {
-            Toast.makeText(this, "this is not your job", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "this is not your job", Toast.LENGTH_LONG).show()
         }
         return (iod != currentID)
     }

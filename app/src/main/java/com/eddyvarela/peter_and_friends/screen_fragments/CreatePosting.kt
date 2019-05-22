@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
@@ -22,6 +23,8 @@ import android.widget.Toast
 import com.eddyvarela.peter_and_friends.CreateMailActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Post
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -30,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.create_posting_fragment.*
 import kotlinx.android.synthetic.main.job_post_row.*
 import kotlinx.android.synthetic.main.mail_create.*
+import kotlinx.android.synthetic.main.user_registration_activity.*
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
 import java.net.URLEncoder
@@ -55,7 +59,9 @@ class CreatePosting : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
 
         btnSubmit.setOnClickListener {
-            sendClick(view!!)
+            if (isFormValid()) {
+                sendClick(view!!)
+            }
         }
         btnCaptureJobPhoto.setOnClickListener {
             val intentStartCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -92,6 +98,26 @@ class CreatePosting : DialogFragment() {
         }
     }
 
+    private fun isFormValid():Boolean{
+        return when {
+            etJobTitle.text.isEmpty() ->{
+                etJobTitle.error = "This field cannot be empty."
+                false
+            }
+
+            etJobDescription.text.isEmpty() ->{
+                etJobDescription.error = "Please add some information."
+                false
+            }
+
+            etJobPayment.text.isEmpty() ->{
+                etJobPayment.error = "This field may not be empty."
+                false
+            }
+            else ->true
+        }
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> {
@@ -114,11 +140,12 @@ class CreatePosting : DialogFragment() {
 
     fun uploadPost(imgURL: String = "") {
 
+
         var db = FirebaseFirestore.getInstance()
         var postCollection = db.collection("posts")
 
 
-        var payment:Float = etJobPayment.text.toString().toFloat()
+        var payment: Float = etJobPayment.text.toString().toFloat()
 
         var formatted = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         var timeStamp = formatted.format(Date())
@@ -130,7 +157,7 @@ class CreatePosting : DialogFragment() {
             etJobTitle.text.toString(),
             etJobDescription.text.toString(),
             "",
-                    imgURL,
+            imgURL,
             "%.2f".format(payment)
         )
 
@@ -156,18 +183,23 @@ class CreatePosting : DialogFragment() {
         newImagesRef.putBytes(imageInBytes)
             .addOnFailureListener { exception ->
                 Toast.makeText(context, exception.message, Toast.LENGTH_SHORT).show()
-            }.addOnSuccessListener {
-                Toast.makeText(context, "On success" , Toast.LENGTH_SHORT).show()
-                newImagesRef.downloadUrl.addOnCompleteListener { task -> uploadPost(task.result.toString()) }
+            }.addOnSuccessListener { taskSnapshot ->
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+
+                newImagesRef.downloadUrl.addOnCompleteListener(object : OnCompleteListener<Uri> {
+                    override fun onComplete(task: Task<Uri>) {
+                        uploadPost(task.result.toString())
+                    }
+                }
+                )
             }
     }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        if (requestCode == CreatePosting.CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-//            uploadBitmap = data!!.extras.get("data") as Bitmap
-//            imgAttach.setImageBitmap(uploadBitmap)
-//            imgAttach.visibility = View.VISIBLE
-//        }
-//    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            uploadBitmap = data!!.extras.get("data") as Bitmap
+            ivJobImg.setImageBitmap(uploadBitmap)
+            ivJobImg.visibility = View.VISIBLE
+        }
+    }
 }

@@ -48,4 +48,5 @@
     <string name="detail">Details</string>
     <string name="short_app_name"><![CDATA[P&F]]></string>
     <string name="log_in">Log in</string>
+    <string name="create_job">Create Job</string>
 </resources>
