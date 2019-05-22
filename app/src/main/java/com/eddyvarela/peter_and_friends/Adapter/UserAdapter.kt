@@ -29,13 +29,13 @@ class UserAdapter(
 
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val tvFirstName: TextView = itemView.tvFirstName
-        val tvLastName: TextView = itemView.tvLastName
-        val tvAddress:TextView = itemView.tvAddress
-        val tvRating: RatingBar = itemView.ratingBar
-        val tvDescription: TextView = itemView.tvDescription
-        val profilePicture: ImageView = itemView.profilePicture
-        val btnEditBio: Button = itemView.btnEditBio
+//        val tvFirstName: TextView = itemView.tvFirstName
+//        val tvLastName: TextView = itemView.tvLastName
+//        val tvAddress:TextView = itemView.tvAddress
+//        val tvRating: RatingBar = itemView.ratingBar
+//        val tvDescription: TextView = itemView.tvDescription
+//        val profilePicture: ImageView = itemView.profilePicture
+//        val btnEditBio: Button = itemView.btnEditBio
     }
 
     //this is fine
@@ -83,24 +83,24 @@ class UserAdapter(
             userList[holder.adapterPosition]
 
 
-        holder.tvFirstName.text = firstName
-        holder.tvLastName.text = lastName
-
-//        if (profilePicture.isNotEmpty()) {
-//            holder.profilePicture.visibility = View.VISIBLE
-//            Glide.with(context).load(profilePicture).into(holder.profilePicture)
+//        holder.tvFirstName.text = firstName
+//        holder.tvLastName.text = lastName
+//
+////        if (profilePicture.isNotEmpty()) {
+////            holder.profilePicture.visibility = View.VISIBLE
+////            Glide.with(context).load(profilePicture).into(holder.profilePicture)
+////        }
+////        else {
+////            holder.profilePicture.visibility = View.GONE
+////        }
+//
+//        holder.tvDescription.text = description
+//        holder.tvAddress.text = address
+//
+//
+//        holder.btnEditBio.setOnClickListener {
+//            var intentDetails = Intent(context, EditBioActivity::class.java)
+//            ContextCompat.startActivity(context, intentDetails, null)
 //        }
-//        else {
-//            holder.profilePicture.visibility = View.GONE
-//        }
-
-        holder.tvDescription.text = description
-        holder.tvAddress.text = address
-
-
-        holder.btnEditBio.setOnClickListener {
-            var intentDetails = Intent(context, EditBioActivity::class.java)
-            ContextCompat.startActivity(context, intentDetails, null)
-        }
     }
 }
