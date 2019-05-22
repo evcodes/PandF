@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@color/colorSpearmint">
+    <ImageView
+            android:layout_width="174dp"
+            android:layout_height="157dp"
+            android:src="@drawable/peter_and_friends_logo"
+            android:id="@+id/imageView"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.497"/>
+
+    <ImageView
+            android:contentDescription=""
+            android:id="@+id/btn_capture_photo"
+            android:layout_width="342dp"
+            android:layout_height="341dp"
+            android:src="@drawable/white_rectangle"
+
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.489" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/signUpDesc"/>
+
+
+    <TextView
+            android:text="Update Your Personal Information."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signUpDesc"
+            android:textSize="20sp"
+
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+    <EditText
+            android:id="@+id/etUpdateFirstName"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:hint="@string/first_name"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="@id/btn_capture_photo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"/>
+    <EditText
+            android:id="@+id/etUpdateLastName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:hint="@string/last_name"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/etUpdateFirstName"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
+            android:layout_marginLeft="48dp" android:layout_marginStart="48dp" android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp" app:layout_constraintHorizontal_bias="0.4"/>
+    <EditText
+            android:id="@+id/etUpdateAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:hint="Address"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etUpdateLastName"/>
+
+    <EditText
+            android:id="@+id/etUpdateDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="8"
+            android:hint="Biography"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etUpdateAddress"/>
+
+
+
+    <Button
+            android:id="@+id/btnUpdateInfo"
+            android:text="UPDATE PROFILE"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/rectangle"
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="80dp"
+            android:layout_marginStart="80dp" app:layout_constraintHorizontal_bias="0.0"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            android:textColor="@android:color/white"
+
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/etUpdateDesc"/>
+
+
+</android.support.constraint.ConstraintLayout>

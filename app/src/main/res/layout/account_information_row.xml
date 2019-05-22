@@ -82,7 +82,9 @@
             app:layout_constraintTop_toBottomOf="@+id/tvAddress" android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"/>
 
-    <Button android:text="@string/edit" android:textColor="#444444" android:background="#FFFFFF"
+    <Button android:text="@string/edit"
+            android:id="@+id/btnEditBio"
+            android:textColor="#444444" android:background="#FFFFFF"
             android:layout_width="103dp" android:layout_height="29dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             android:layout_marginTop="32dp"

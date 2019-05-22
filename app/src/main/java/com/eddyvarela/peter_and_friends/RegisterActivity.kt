@@ -51,6 +51,10 @@ class RegisterActivity : AppCompatActivity(){
                 FirebaseAuth.getInstance().currentUser!!.uid,
                 etFirstNameRegister.text.toString(),
                 etLastNameRegister.text.toString(),
+                "",
+                "",
+                "",
+                "",
                 0)
 
             //store users info in userCollection database

@@ -15,7 +15,7 @@
     </style>
 
     <style name = "button_apply_default" parent="Theme.AppCompat">
-        <item name = "android:textColor">@color/colorAccent</item>
+        <item name = "android:textColor">@android:color/white</item>
         <item name = "android:background">@color/colorPrimaryDark</item>
         <item name = "android:fontFamily">@font/rubik_regular</item>
         <item name ="android:radius">10dp</item>

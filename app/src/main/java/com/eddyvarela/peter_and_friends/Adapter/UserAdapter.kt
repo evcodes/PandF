@@ -1,17 +1,22 @@
 package com.eddyvarela.peter_and_friends.Adapter
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import com.eddyvarela.peter_and_friends.EditBioActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.UserInformation
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.account_fragment.view.*
+import kotlinx.android.synthetic.main.account_information_row.*
 import kotlinx.android.synthetic.main.account_information_row.view.*
 
 
@@ -30,6 +35,7 @@ class UserAdapter(
         val tvRating: RatingBar = itemView.ratingBar
         val tvDescription: TextView = itemView.tvDescription
         val profilePicture: ImageView = itemView.profilePicture
+        val btnEditBio: Button = itemView.btnEditBio
     }
 
     //this is fine
@@ -41,9 +47,9 @@ class UserAdapter(
     }
 
     //not needed I dont think since there is only one profile per user
-    override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getItemCount() = userList.size //To change body of created functions use File | Settings | File Templates.
+
+
     fun addUser(UserInformation: UserInformation, key: String) {
         userList.add(UserInformation)
         userKeys.add(key)
@@ -69,6 +75,8 @@ class UserAdapter(
         }
     }
 
+
+
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
 
         val (authorId, firstName, lastName, profilePicture, description, address, rating) =
@@ -88,10 +96,11 @@ class UserAdapter(
 
         holder.tvDescription.text = description
         holder.tvAddress.text = address
-        //check this
-        holder.tvRating.numStars = rating
 
+
+        holder.btnEditBio.setOnClickListener {
+            var intentDetails = Intent(context, EditBioActivity::class.java)
+            ContextCompat.startActivity(context, intentDetails, null)
+        }
     }
-
-
 }
