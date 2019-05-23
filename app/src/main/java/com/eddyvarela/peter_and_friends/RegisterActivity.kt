@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.user_registration_activity.*
 
 private var mAuth: FirebaseAuth? = null
 
-class RegisterActivity : AppCompatActivity(){
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_registration_activity)
@@ -22,6 +22,7 @@ class RegisterActivity : AppCompatActivity(){
         }
 
     }
+
     private fun userNameFromEmail(email: String) = email.substringBefore("@")
 
     //check registration
@@ -51,37 +52,39 @@ class RegisterActivity : AppCompatActivity(){
                 FirebaseAuth.getInstance().currentUser!!.uid,
                 etFirstNameRegister.text.toString(),
                 etLastNameRegister.text.toString(),
+                etUserName.text.toString(),
                 "",
                 "",
                 "",
-                "",
-                0)
+                0
+            )
 
             //store users info in userCollection database
-            userCollection.add(userInfo)//.addOnSuccessListener {
-//                Toast.makeText(this@RegisterActivity, "User ", Toast.LENGTH_LONG).show()
-//            }.addOnFailureListener{
-//                Toast.makeText(this@RegisterActivity, "Post was not saved: ${it.message}", Toast.LENGTH_LONG).show()
-//            }
+            userCollection.add(userInfo).addOnSuccessListener {
 
-            Toast.makeText(this@RegisterActivity,
-                "Registration successful! Please log in now.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this@RegisterActivity,
+                    "Registration successful! Please log in now.", Toast.LENGTH_LONG
+                ).show()
 
-            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
 
-        }.addOnFailureListener{
-            Toast.makeText(this@RegisterActivity,
-                "Registration failed. ${it.message}", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(
+                    this@RegisterActivity,
+                    "Registration failed. ${it.message}", Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
     private fun isFormValid(): Boolean {
         return when {
-            etFirstNameRegister.text.isEmpty() ->{
+            etFirstNameRegister.text.isEmpty() -> {
                 etFirstNameRegister.error = "Please input your first name!"
                 false
             }
-            etLastNameRegister.text.isEmpty() ->{
+            etLastNameRegister.text.isEmpty() -> {
                 etLastNameRegister.error = "Please input your last name!"
                 false
             }

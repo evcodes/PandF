@@ -22,13 +22,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         navigation.setOnNavigationItemSelectedListener(myOnNavigationItemSelectedListener)
 
         showFragmentByTag(HomeFragment.TAG, false)
 
     }
-
 
     override fun onBackPressed() {
         super.onBackPressed()

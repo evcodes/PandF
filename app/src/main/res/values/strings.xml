@@ -39,7 +39,6 @@
     <string name="delete">Delete</string>
     <string name="create_job_post">CREATE JOB POSTING</string>
     <string name="payment_hint">How much do you want to pay?</string>
-
     <string name="author">author</string>
     <string name="descriptive_text">Descriptive Text</string>
     <string name="local_remote">Local/Remote</string>
@@ -50,4 +49,17 @@
     <string name="log_in">Log in</string>
     <string name="create_job">Create Job</string>
     <string name="jobdescription">JobDescription</string>
+    <string name="legal_info">By signing up, you agree to our Terms, Data Policy, and Cookies Policy. Lucky for you, we
+        have none.
+    </string>
+    <string name="gig_summary">Gigs Completed: Spring Mobile Software Professor Instagram Lead Developer Facebook Lead
+        Developer
+    </string>
+    <string name="sample_bio">Hello! I am passionate about mobile software development! Shoot me a message if you need
+        help implementing a recycler view!
+    </string>
+    <string name="sample_name">Peter Ékler</string>
+    <string name="sample_location">Budapest, Hungary</string>
+    <string name="attach_image">Attach image</string>
+    <string name="update_your_personal_information">Update Your Personal Information.</string>
 </resources>

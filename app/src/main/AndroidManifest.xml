@@ -23,7 +23,7 @@
         <activity android:name=".JobDetailActivity"/>
         <activity android:name=".CreateMailActivity"/>
         <activity android:name=".RegisterActivity"/>
-        <activity android:name=".EditBioActivity"/>
+        <activity android:name=".EditBioActivity"/>RR
         <activity android:name=".MainActivity"
                   android:windowSoftInputMode="stateHidden|adjustPan"/>
 

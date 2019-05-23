@@ -99,21 +99,18 @@ class MailsAdapter (
 
         mailsList.sortedWith(compareBy {holder.tvDate.toString() })
 
-
     }
 
     fun addMail(Mail: Mail, key: String) {
         mailsList.add(Mail)
         mailsKey.add(key)
         notifyDataSetChanged()
-
     }
 
     private fun removeMail(index: Int) {
         FirebaseFirestore.getInstance().collection("mails").document(
             mailsKey[index]
         ).delete()
-
         mailsList.removeAt(index)
         mailsKey.removeAt(index)
         notifyItemRemoved(index)

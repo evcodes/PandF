@@ -1,118 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
-
-    <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorSpearmint">
+<android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSpearmint">
 
 
-        <ImageView
-                android:contentDescription=""
-                android:id="@+id/btn_capture_photo"
-                android:layout_width="347dp"
-                android:layout_height="488dp"
-                android:src="@drawable/white_rectangle"
+    <ImageView
+            android:contentDescription=""
+            android:id="@+id/btn_capture_photo"
+            android:layout_width="347dp"
+            android:layout_height="488dp"
+            android:src="@drawable/white_rectangle"
 
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-                android:layout_marginTop="76dp" app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            android:layout_marginTop="76dp" app:layout_constraintTop_toTopOf="parent"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imageView2"
-                android:src="@drawable/account"
+    <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageView2"
+            android:src="@drawable/account"
 
-                android:layout_width="146dp"
-                android:layout_height="148dp"
-                android:layout_marginTop="92dp"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="132dp" android:layout_marginStart="132dp"
-
-                app:srcCompat="@mipmap/ic_launcher_round"/>
-
-
-        <TextView
-                android:id="@+id/etJobTitle"
-                android:text="Budapest, Hungary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:ems="10"
-
-                app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
-                app:layout_constraintStart_toStartOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
-                android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"
-                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/etJobTitle2"
-                android:layout_marginTop="8dp"/>
-
-        <TextView
-                android:id="@+id/etJobTitle2"
-
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:ems="10"
-
-                android:text="Peter Ékler"
-                app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
-                app:layout_constraintStart_toStartOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
-                android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView2"/>
-        <TextView
-                android:id="@+id/etJobDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:lines="4"
-                android:text="Hello! I am passionate about mobile software development! Shoot me a message if you need help implementing a recycler view!"
-                app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
-                app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
-                android:layout_marginLeft="48dp" android:layout_marginStart="48dp" android:layout_marginEnd="48dp"
-                android:layout_marginRight="48dp" app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etJobTitle"/>
+            android:layout_width="0dp"
+            android:layout_height="146dp"
+            app:srcCompat="@mipmap/ic_launcher_round"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="@+id/btn_capture_photo"/>
 
 
-        <TextView
-                android:id="@+id/etJobDescription2"
-                android:text="Gigs Completed:\nSpring Mobile Software Professor\nInstagram Lead Developer\nFacebook Lead Developer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:lines="4"
-                android:hint="@string/job_details"
-                app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
-                app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
-                android:layout_marginLeft="48dp" android:layout_marginStart="48dp" android:layout_marginEnd="48dp"
-                android:layout_marginRight="48dp" app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etJobDescription"/>
-        <Button
-                android:id="@+id/btnSubmit"
-                android:text="Edit Bio"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/rectangle"
-                android:layout_marginEnd="80dp"
-                android:layout_marginRight="80dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp" app:layout_constraintHorizontal_bias="0.0"
-                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-                android:textColor="@android:color/white"
+    <TextView
+            android:id="@+id/etJobTitle"
+            android:text="@string/sample_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/etJobBioName"
+            android:layout_marginTop="8dp"/>
 
-                android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/etJobDescription2"/>
+    <TextView
+            android:id="@+id/etJobBioName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/sample_name"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo" android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" android:layout_marginEnd="48dp" android:layout_marginRight="48dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView2"/>
+    <TextView
+            android:id="@+id/etJobDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:lines="4"
+            android:text="@string/sample_bio"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
+            android:layout_marginLeft="48dp" android:layout_marginStart="48dp" android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp" app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etJobTitle"/>
 
 
-    </android.support.constraint.ConstraintLayout>
+    <TextView
+            android:id="@+id/etGigsCompleted"
+            android:text="@string/gig_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:lines="4"
+            android:hint="@string/job_details"
+            app:layout_constraintEnd_toEndOf="@+id/btn_capture_photo"
+            app:layout_constraintStart_toStartOf="@+id/btn_capture_photo"
+            android:layout_marginLeft="48dp" android:layout_marginStart="48dp" android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp" app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etJobDescription"/>
+    <Button
+            android:id="@+id/btnSubmit"
+            android:text="Edit Bio"
+            android:textSize="20sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            android:textColor="@android:color/white"
 
-</ScrollView>
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/etGigsCompleted"
+            app:layout_constraintStart_toStartOf="@+id/etGigsCompleted"
+            app:layout_constraintEnd_toEndOf="@+id/etGigsCompleted"/>
+
+
+</android.support.constraint.ConstraintLayout>
+
 
 

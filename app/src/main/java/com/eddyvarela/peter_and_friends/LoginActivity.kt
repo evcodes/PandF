@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.login_activity.*
 import java.lang.Thread.sleep
 
@@ -24,8 +23,6 @@ class LoginActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
 
         mAuth = FirebaseAuth.getInstance()
-
-
         registerButton.setOnClickListener {
             toRegisterActivity()
         }
@@ -57,6 +54,9 @@ class LoginActivity : AppCompatActivity() {
                             it.exception?.message,
                     Toast.LENGTH_SHORT
                 ).show()
+
+                pbLogin.visibility = View.INVISIBLE
+                btnLogin.visibility = View.VISIBLE
             }
         }.addOnFailureListener {
             Toast.makeText(

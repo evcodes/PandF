@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.eddyvarela.peter_and_friends.JobDetailActivity
 import com.eddyvarela.peter_and_friends.R
 import com.eddyvarela.peter_and_friends.data.Post
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.job_post_row.view.*
 
@@ -43,15 +44,8 @@ class PostAdapter(
         holder.tvPay.text = payAmt
 
         holder.btnDetail.setOnClickListener{
-            var intentDetails = Intent(context, JobDetailActivity::class.java)
-            intentDetails.putExtra("jobTitle", postsList[holder.adapterPosition].title)
-            intentDetails.putExtra("jobAuthor", postsList[holder.adapterPosition].author)
-            intentDetails.putExtra("jobDescription", postsList[holder.adapterPosition].description)
-            intentDetails.putExtra("jobPayAmt", postsList[holder.adapterPosition].payAmt)
-            intentDetails.putExtra("jobID", postsList[holder.adapterPosition].iod)
-            intentDetails.putExtra("time", postsList[holder.adapterPosition].time)
-            intentDetails.putExtra("imgUrl", postsList[holder.adapterPosition].imgURL)
-            startActivity(context,intentDetails,null)
+            viewDetails(holder)
+
         }
 
         if (imgURL.isNotEmpty()) {
@@ -79,6 +73,18 @@ class PostAdapter(
             postKeys.removeAt(index)
             notifyItemRemoved(index)
         }
+    }
+
+    fun viewDetails (holder:ViewHolder){
+        var intentDetails = Intent(context, JobDetailActivity::class.java)
+        intentDetails.putExtra("jobTitle", postsList[holder.adapterPosition].title)
+        intentDetails.putExtra("jobAuthor", postsList[holder.adapterPosition].author)
+        intentDetails.putExtra("jobDescription", postsList[holder.adapterPosition].description)
+        intentDetails.putExtra("jobPayAmt", postsList[holder.adapterPosition].payAmt)
+        intentDetails.putExtra("jobID", postsList[holder.adapterPosition].iod)
+        intentDetails.putExtra("time", postsList[holder.adapterPosition].time)
+        intentDetails.putExtra("imgUrl", postsList[holder.adapterPosition].imgURL)
+        startActivity(context,intentDetails,null)
     }
 
     fun addPost(post: Post, key: String) {

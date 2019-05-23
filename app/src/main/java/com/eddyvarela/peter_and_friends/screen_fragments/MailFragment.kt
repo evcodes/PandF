@@ -151,11 +151,7 @@ class MailFragment : Fragment() {
                         }
                     }
                 }
-            })
-
-
-
-
+            }
+        )
     }
-
 }

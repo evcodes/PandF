@@ -24,19 +24,16 @@ class UserAdapter(
 
     private val context: Context, val uId: String) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
+
     private var userList = mutableListOf<UserInformation>()
     private var userKeys = mutableListOf<String>()
 
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-//        val tvFirstName: TextView = itemView.tvFirstName
-//        val tvLastName: TextView = itemView.tvLastName
-//        val tvAddress:TextView = itemView.tvAddress
-//        val tvRating: RatingBar = itemView.ratingBar
-//        val tvDescription: TextView = itemView.tvDescription
-//        val profilePicture: ImageView = itemView.profilePicture
-//        val btnEditBio: Button = itemView.btnEditBio
+
     }
+
+    override fun getItemCount(): Int = userList.size
 
     //this is fine
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,9 +42,6 @@ class UserAdapter(
         )
         return ViewHolder(view)
     }
-
-    //not needed I dont think since there is only one profile per user
-    override fun getItemCount() = userList.size //To change body of created functions use File | Settings | File Templates.
 
 
     fun addUser(UserInformation: UserInformation, key: String) {
@@ -75,32 +69,10 @@ class UserAdapter(
         }
     }
 
-
-
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
 
         val (authorId, firstName, lastName, profilePicture, description, address, rating) =
             userList[holder.adapterPosition]
 
-
-//        holder.tvFirstName.text = firstName
-//        holder.tvLastName.text = lastName
-//
-////        if (profilePicture.isNotEmpty()) {
-////            holder.profilePicture.visibility = View.VISIBLE
-////            Glide.with(context).load(profilePicture).into(holder.profilePicture)
-////        }
-////        else {
-////            holder.profilePicture.visibility = View.GONE
-////        }
-//
-//        holder.tvDescription.text = description
-//        holder.tvAddress.text = address
-//
-//
-//        holder.btnEditBio.setOnClickListener {
-//            var intentDetails = Intent(context, EditBioActivity::class.java)
-//            ContextCompat.startActivity(context, intentDetails, null)
-//        }
     }
 }

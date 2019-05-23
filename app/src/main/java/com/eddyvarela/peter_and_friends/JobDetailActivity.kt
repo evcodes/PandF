@@ -30,11 +30,10 @@ class JobDetailActivity  : AppCompatActivity() {
         tvJobInfoPayAmt.text = intent.getStringExtra("jobPayAmt").toString()
 
         var imgUrl = intent.getStringExtra("imgUrl")
-
+//
         if (imgUrl.isNotEmpty()) {
             ivJobDetails.visibility = View.VISIBLE
             Glide.with(this).load(imgUrl).into(ivJobDetails)
-            //Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/peter-and-friends-ce246.appspot.com/o/images%2F06cb763d-47f3-4514-b9bb-34d3e6c276b7.jpg?alt=media&token=a8b466e7-a06d-472a-8920-c275fe691732").into(ivJobDetails)
         } else {
             ivJobDetails.visibility = View.GONE
         }
@@ -94,8 +93,8 @@ class JobDetailActivity  : AppCompatActivity() {
                     Log.d("snap", documentSnapshot.toString())
                     Log.d("snap", e.toString())
                         if (documentSnapshot != null) {
-                        Toast.makeText(this, "Sorry, you cannot apply to a job more than once", Toast.LENGTH_LONG)
-                         .show()
+//                        Toast.makeText(this, "Sorry, you cannot apply to a job more than once", Toast.LENGTH_LONG)
+//                         .show()
                         applied = true
                     }
                 }

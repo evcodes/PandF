@@ -65,9 +65,6 @@ class EditBioActivity : AppCompatActivity() {
 
             }
 
-
-
-
                     startActivity(Intent(this@EditBioActivity, AccountFragment::class.java))
 
                 }
